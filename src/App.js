@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import CourseGoalList from './components/CourseGoals/CourseGoalList/CourseGoalList';
 import CourseInput from './components/CourseGoals/CourseInput/CourseInput';
 import './App.css';
+import NegativeNumber from './components/CourseGoals/CourseInput/NegativeNumber';
 
 const App = () => {
   const [courseGoals, setCourseGoals] = useState([
@@ -10,13 +11,14 @@ const App = () => {
     { text: 'Finish the course!', id: 'g2' }
   ]);
 
-  const addGoalHandler = enteredText => {
+  const addGoalHandler = (enteredText,enteredText2) => {
     setCourseGoals(prevGoals => {
       const updatedGoals = [...prevGoals];
-      updatedGoals.unshift({ text: enteredText, id: Math.random().toString() });
+      updatedGoals.unshift({ text: enteredText+enteredText2+'yearsold', id: Math.random().toString() });
       return updatedGoals;
     });
   };
+
 
   const deleteItemHandler = goalId => {
     setCourseGoals(prevGoals => {
@@ -37,6 +39,7 @@ const App = () => {
 
   return (
     <div>
+
       <section id="goal-form">
         <CourseInput onAddGoal={addGoalHandler} />
       </section>
